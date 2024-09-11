@@ -11,9 +11,6 @@ public class RemoteControl {
     private Socket socket;
 
     public static void main(String[] args) {
-        for (int i = 0; i < args.length; ++i) {
-            System.out.println(args[i]+"\n");
-        } 
         if (args.length == 2) {
             SERVER_HOST = args[0];
             TCP_PORT = Integer.valueOf(args[1]);

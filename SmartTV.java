@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import Lab1.RemoteHandler;
-
 public class SmartTV {
 
     public static int TCP_PORT = 1238;
@@ -62,5 +60,13 @@ public class SmartTV {
             System.err.println("Could not accept the next client: " + e.getMessage());
         }
         return clientSocket;
+    }
+
+    private int getActiveChannel() {
+        return activeChannel;
+    }
+
+    private void setActiveChannel(int channel) {
+        activeChannel = channel;
     }
 }
