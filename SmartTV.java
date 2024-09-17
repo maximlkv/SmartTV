@@ -69,4 +69,12 @@ public class SmartTV {
     private void setActiveChannel(int channel) {
         activeChannel = channel;
     }
+
+    private int getAvailableChannels() {
+        return NUMBER_OF_CHANNELS;
+    }
+
+    private boolean getIsOn() {
+        return isOn;
+    }
 }
