@@ -62,7 +62,7 @@ public class SmartTV {
         return clientSocket;
     }
 
-    private int getActiveChannel() {
+    public int getActiveChannel() {
         return activeChannel;
     }
 
@@ -74,7 +74,11 @@ public class SmartTV {
         return NUMBER_OF_CHANNELS;
     }
 
-    private boolean getIsOn() {
+    public boolean getIsOn() {
         return isOn;
+    }
+    
+    public void setIsOn(boolean isOn) {
+        this.isOn = isOn;
     }
 }
