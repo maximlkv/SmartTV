@@ -100,8 +100,7 @@ public class RemoteHandler {
                 socketWriter.println("---------------------------------------");
                 socketWriter.println("Current Channel: " + smartTV.getActiveChannel() + "\n"); 
                 socketWriter.println("Controls:"); 
-                socketWriter.println("0 - Turn TV off"); 
-                socketWriter.println("1 - Turn TV on"); 
+                socketWriter.println("1 - Turn TV on/off");
                 socketWriter.println("2 - Switch one channel up"); 
                 socketWriter.println("3 - Switch one channel down"); 
                 socketWriter.println("---------------------------------------");
@@ -113,6 +112,7 @@ public class RemoteHandler {
                 socketWriter.println("END_OF_MESSAGE");
             }
         } catch (Exception e) {
+            System.err.println("Error sending info to writer: " + e.getMessage());
         }
 
     }
