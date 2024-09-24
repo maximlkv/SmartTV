@@ -43,7 +43,7 @@ public class RemoteControl {
                         }
                         System.out.println(serverResponse);
                     }
-                } while (!buttonNumber.equals("-1")); 
+                } while (true); 
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }
@@ -82,24 +82,6 @@ public class RemoteControl {
         }
 
         return success;
-    }
-
-    private void printTerminalInterface(boolean tvIsOn, int currentChannel) {
-        
-        if (tvIsOn) {
-            System.out.println("---------------------------------------\n" + 
-            "Current Channel: " + currentChannel + "\n\n" + 
-            "Controls:\n" + 
-            "0 - Turn TV off\n" + 
-            "1 - Turn TV on\n" + 
-            "2 - Switch one channel up\n" + 
-            "3 - Switch one channel down\n" + 
-            "---------------------------------------\n");
-        } else {
-            System.out.println("---------------------------------------\n" + 
-            "TV turned off. Press 1 to turn on.\n" +
-            "---------------------------------------");
-        }
     }
 
     private String reiceiveOneLineFromServer() {

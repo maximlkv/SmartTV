@@ -83,9 +83,9 @@ public class RemoteHandler {
             } else {
                 if (remoteCommand.equals("1")) {
                     smartTV.setIsOn(true);
-                    socketWriter.println("TV turned on.\n");
+                    socketWriter.println("TV turned on.");
                 } else {
-                    socketWriter.println("Unknown command. Please use one of the following buttons: \n");
+                    socketWriter.println("Unknown command. Please use one of the following buttons:");
                 }
             }
             sendInterfaceToRemote();
@@ -100,15 +100,14 @@ public class RemoteHandler {
                 socketWriter.println("---------------------------------------");
                 socketWriter.println("Current Channel: " + smartTV.getActiveChannel() + "\n"); 
                 socketWriter.println("Controls:"); 
-                socketWriter.println("0 - Turn TV off"); 
-                socketWriter.println("1 - Turn TV on"); 
+                socketWriter.println("1 - Turn TV off");
                 socketWriter.println("2 - Switch one channel up"); 
                 socketWriter.println("3 - Switch one channel down"); 
                 socketWriter.println("---------------------------------------");
                 socketWriter.println("END_OF_MESSAGE");
             } else {
                 socketWriter.println("---------------------------------------");
-                socketWriter.println("TV turned off. Press 1 to turn on.");
+                socketWriter.println("TV turned off. Press 1 to turn TV on.");
                 socketWriter.println("---------------------------------------");
                 socketWriter.println("END_OF_MESSAGE");
             }
