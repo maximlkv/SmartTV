@@ -62,7 +62,8 @@ public class SmartTV {
         return clientSocket;
     }
 
-    public int getActiveChannel() {
+    public int
+    getActiveChannel() {
         return activeChannel;
     }
 
@@ -74,11 +75,40 @@ public class SmartTV {
         return NUMBER_OF_CHANNELS;
     }
 
+    /**
+     * Returns true if channel is greater than 1 but lower than NUMBER_OF_CHANNELS
+     * @param channel
+     * @return
+     */
+    private boolean isInChannelsRange(int channel) {
+        return channel >= 1 && channel <= getAvailableChannels();
+    }
+
     public boolean getIsOn() {
         return isOn;
     }
     
     public void setIsOn(boolean isOn) {
         this.isOn = isOn;
+    }
+
+    public void setChannelUp() {
+        int currentChannel = getActiveChannel();
+        int newChannel = currentChannel +1;
+        if (isInChannelsRange(newChannel)) {
+            setActiveChannel(newChannel);
+        }else{
+            setActiveChannel(1); //Default rule. If if out of range, we return 1 as next channel.
+        }
+    }
+
+    public void setChannelDown() {
+        int currentChannel = getActiveChannel();
+        int newChannel = currentChannel - 1;
+        if (isInChannelsRange(newChannel)) {
+            setActiveChannel(newChannel);
+        }else{
+            setActiveChannel(1); //Default rule. If if out of range, we return 1 as next channel.
+        }
     }
 }
