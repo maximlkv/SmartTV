@@ -78,17 +78,29 @@ public class RemoteHandler {
 
     private void handleCommand(String remoteCommand) {
         try {
-            if (smartTV.getIsOn()) {
-                // TODO handle command if TV is on
-            } else {
-                if (remoteCommand.equals("1")) {
+            if (remoteCommand.equals("1")) {
+                if (!smartTV.getIsOn()) {
                     smartTV.setIsOn(true);
                     socketWriter.println("TV turned on.");
                 } else {
-                    socketWriter.println("Unknown command. Please use one of the following buttons:");
+                    smartTV.setIsOn(false);
+                    socketWriter.println("TV turned off.\n");
                 }
             }
+            if (remoteCommand.equals("2") && smartTV.getIsOn()) {
+                smartTV.setChannelUp();
+                socketWriter.println("Channel up. New Channel: " + smartTV.getActiveChannel() + "\n");
+
+            }
+            if (remoteCommand.equals("3") && smartTV.getIsOn()) {
+                smartTV.setChannelDown();
+                socketWriter.println("Channel down. New Channel: " + smartTV.getActiveChannel() + "\n");
+
+            } else {
+                socketWriter.println("Unknown command. Please use one of the following buttons: \n");
+            }
             sendInterfaceToRemote();
+
         } catch (Exception e) {
             System.err.println("Error handling Command: " + e.getMessage());
         }
