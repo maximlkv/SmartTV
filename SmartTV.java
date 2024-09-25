@@ -108,7 +108,8 @@ public class SmartTV {
         if (isInChannelsRange(newChannel)) {
             setActiveChannel(newChannel);
         }else{
-            setActiveChannel(1); //Default rule. If if out of range, we return 1 as next channel.
+            setActiveChannel(getAvailableChannels()); //Default rule. If is out of range,
+            // we return max as next channel.
         }
     }
 }
