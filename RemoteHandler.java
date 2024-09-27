@@ -49,20 +49,6 @@ public class RemoteHandler {
     }
     
 
-    private String readOneCommand(Socket clientSocket) {
-        String remoteCommand = null;
-        try (BufferedReader in = new BufferedReader(
-                new InputStreamReader(clientSocket.getInputStream()))) {
-            remoteCommand = in.readLine();
-            if (remoteCommand != null) {
-                System.out.println("Received command: " + remoteCommand);
-            }
-        } catch (IOException e) {
-            System.err.println("Error reading command from client: " + e.getMessage());
-        }
-        return remoteCommand;
-    }
-
     private void closeConnection() {
         try {
             if (socketReader != null) {
@@ -85,20 +71,20 @@ public class RemoteHandler {
                     socketWriter.println("TV turned on.");
                 } else {
                     smartTV.setIsOn(false);
-                    socketWriter.println("TV turned off.\n");
+                    socketWriter.println("TV turned off.");
                 }
             }
             if (remoteCommand.equals("2") && smartTV.getIsOn()) {
                 smartTV.setChannelUp();
-                socketWriter.println("Channel up. New Channel: " + smartTV.getActiveChannel() + "\n");
+                socketWriter.println("Channel up. New Channel: " + smartTV.getActiveChannel());
 
             }
             if (remoteCommand.equals("3") && smartTV.getIsOn()) {
                 smartTV.setChannelDown();
-                socketWriter.println("Channel down. New Channel: " + smartTV.getActiveChannel() + "\n");
+                socketWriter.println("Channel down. New Channel: " + smartTV.getActiveChannel());
 
             } else {
-                socketWriter.println("Unknown command. Please use one of the following buttons: \n");
+                socketWriter.println("Unknown command. Please use one of the following buttons: ");
             }
             sendInterfaceToRemote();
 
