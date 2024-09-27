@@ -68,10 +68,10 @@ public class RemoteHandler {
             if (remoteCommand.equals("1")) {
                 handleOnOfCommand();
             }
-            if (remoteCommand.equals("2") && smartTV.getIsOn()) {
+            else if (remoteCommand.equals("2") && smartTV.getIsOn()) {
                 handleChannelUpCommand();
             }
-            if (remoteCommand.equals("3") && smartTV.getIsOn()) {
+            else if (remoteCommand.equals("3") && smartTV.getIsOn()) {
                 handleChannelDownCommand();
             } else {
                 socketWriter.println("Unknown command. Please use one of the following buttons: ");
