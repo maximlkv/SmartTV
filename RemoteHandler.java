@@ -66,23 +66,13 @@ public class RemoteHandler {
     private void handleCommand(String remoteCommand) {
         try {
             if (remoteCommand.equals("1")) {
-                if (!smartTV.getIsOn()) {
-                    smartTV.setIsOn(true);
-                    socketWriter.println("TV turned on.");
-                } else {
-                    smartTV.setIsOn(false);
-                    socketWriter.println("TV turned off.");
-                }
+                handleOnOfCommand();
             }
             if (remoteCommand.equals("2") && smartTV.getIsOn()) {
-                smartTV.setChannelUp();
-                socketWriter.println("Channel up. New Channel: " + smartTV.getActiveChannel());
-
+                handleChannelUpCommand();
             }
             if (remoteCommand.equals("3") && smartTV.getIsOn()) {
-                smartTV.setChannelDown();
-                socketWriter.println("Channel down. New Channel: " + smartTV.getActiveChannel());
-
+                handleChannelDownCommand();
             } else {
                 socketWriter.println("Unknown command. Please use one of the following buttons: ");
             }
@@ -90,6 +80,26 @@ public class RemoteHandler {
 
         } catch (Exception e) {
             System.err.println("Error handling Command: " + e.getMessage());
+        }
+    }
+
+    private void handleChannelDownCommand() {
+        smartTV.setChannelDown();
+        socketWriter.println("Channel down. New Channel: " + smartTV.getActiveChannel());
+    }
+
+    private void handleChannelUpCommand() {
+        smartTV.setChannelUp();
+        socketWriter.println("Channel up. New Channel: " + smartTV.getActiveChannel());
+    }
+
+    private void handleOnOfCommand() {
+        if (!smartTV.getIsOn()) {
+            smartTV.setIsOn(true);
+            socketWriter.println("TV turned on.");
+        } else {
+            smartTV.setIsOn(false);
+            socketWriter.println("TV turned off.");
         }
     }
 
