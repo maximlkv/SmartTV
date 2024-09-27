@@ -62,8 +62,7 @@ public class SmartTV {
         return clientSocket;
     }
 
-    public int
-    getActiveChannel() {
+    public int getActiveChannel() {
         return activeChannel;
     }
 

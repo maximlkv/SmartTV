@@ -35,7 +35,6 @@ public class RemoteControl {
                 do {
                     buttonNumber = remoteInputs.next();
                     socketWriter.println(buttonNumber);
-                    
                     String serverResponse;
                     while ((serverResponse = reiceiveOneLineFromServer()) != null) {
                         if (serverResponse.equals("END_OF_MESSAGE")) {
@@ -77,6 +76,13 @@ public class RemoteControl {
             socketWriter = new PrintWriter(socket.getOutputStream(), true);
             System.out.println("Connection established");
             success = true;
+            String serverResponse;
+            while ((serverResponse = reiceiveOneLineFromServer()) != null) {
+                if (serverResponse.equals("END_OF_MESSAGE")) {
+                    break;
+                }
+                System.out.println(serverResponse);
+            }
         } catch (IOException e) {
             System.err.println("Could not connect to the server: " + e.getMessage());
         }
