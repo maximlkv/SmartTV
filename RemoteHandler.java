@@ -34,11 +34,6 @@ public class RemoteHandler {
                 System.out.println("Received command: " + remoteCommand);
                 handleCommand(remoteCommand);
     
-                if (remoteCommand.equals("-1")) {
-                    System.out.println("Termination command received. Disconnecting client.");
-                    break; 
-                }
-    
             }
     
         } catch (IOException e) {
