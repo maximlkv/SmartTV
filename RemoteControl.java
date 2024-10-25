@@ -1,5 +1,3 @@
-package Lab1;
-
 import java.net.Socket;
 import java.util.Scanner;
 import java.io.BufferedReader;
@@ -10,7 +8,7 @@ import java.io.PrintWriter;
 public class RemoteControl {
 
     private static String SERVER_HOST = null;
-    private static int TCP_PORT = 0;
+    private static int TCP_PORT = 1238;
 
     private Socket socket;
     private Scanner remoteInputs;
